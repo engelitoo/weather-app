@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="weather-app">
+      <header>
+        <!-- Search form -->
+        <form id="search-form">
+          <input
+            type="text"
+            placeholder="Enter a city"
+            class="search-input"
+            id="search-input"
+          />
+          <input type="submit" value="Search" class="search-button" />
+        </form>
+      </header>
+
+      <!-- Current weather section -->
+      <div class="current-weather">
+        <!-- City name (will be updated by JavaScript) -->
+        <div class="current-city" id="current-city">Barcelona</div>
+      </div>
+
+      <br />
+
+      <!-- Weather details (will be updated by JavaScript) -->
+      <div class="current-details" id="current-date-time">
+        Saturday 17:34, sunny cold
+      </div>
+      <div>
+        Humidity <strong id="humidity">13%</strong>, Wind
+        <strong id="wind">1.2 km/h</strong>
+      </div>
+
+      <!-- Current temperature (will be updated by JavaScript) -->
+      <div class="current-temperature">
+        <span class="currentweathericon" id="weather-icon">☀️</span>
+        <span class="currenttemperature" id="temperature">16</span>
+        <span class="currentcelsius">°C</span> <br />
+      </div>
+
+      <!-- Forecast (optional, can be updated later) -->
+      <ul>
+        <li>
+          Sun ☀️16°C
+          <div><strong>14°C</strong>-18°C</div>
+        </li>
+        <li>
+          Mon ☀️14°C
+          <div><strong>14°C</strong>-18°C</div>
+        </li>
+        <li>
+          Tue ☀️17°C
+          <div><strong>14°C</strong>-18°C</div>
+        </li>
+        <li>
+          Wed ☀️15°C
+          <div><strong>14°C</strong>-18°C</div>
+        </li>
+        <li>
+          Thu ☀️18°C
+          <div><strong>14°C</strong>-18°C</div>
+        </li>
+      </ul>
+
+      <!-- Footer -->
+      <footer>
+        This project was coded by
+        <a
+          href="https://pixabay.com/de/illustrations/engel-himmel-licht-andacht-8683732/"
+          target="_blank"
+        >
+          Engel Gärtner
+        </a>
+      </footer>
+    </div>
+
+    <!-- Include Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Include your JavaScript file -->
+    <script src="script.js"></script>
+  </body>
+</html>
