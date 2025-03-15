@@ -18,19 +18,34 @@ searchForm.addEventListener("submit", function (event) {
 // Function to fetch weather data from the SheCodes Weather API
 function getWeatherData(city) {
   const apiKey = "ea7o6tce31c14df78ab0e8bc7ea17d99"; // Your API key
-  const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  const currentWeatherUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  const forecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
 
-  // Make the API request using Axios
+  // Make the API request for current weather
   axios
-    .get(apiUrl)
+    .get(currentWeatherUrl)
     .then((response) => {
-      // Update the weather information on the page
+      // Update the current weather information on the page
       displayWeatherData(response.data);
     })
     .catch((error) => {
-      console.error("Error fetching weather data:", error);
+      console.error("Error fetching current weather data:", error);
       alert(
-        "Sorry, we couldn't find the weather for that city. Please try again."
+        "Sorry, we couldn't find the current weather for that city. Please try again."
+      );
+    });
+
+  // Make the API request for forecast
+  axios
+    .get(forecastUrl)
+    .then((response) => {
+      // Update the forecast information on the page
+      displayForecastData(response.data);
+    })
+    .catch((error) => {
+      console.error("Error fetching forecast data:", error);
+      alert(
+        "Sorry, we couldn't find the forecast for that city. Please try again."
       );
     });
 }
@@ -62,6 +77,38 @@ function displayWeatherData(data) {
   // Update wind speed
   const windElement = document.getElementById("wind");
   windElement.textContent = `${data.wind.speed} km/h`;
+}
+
+// Function to display forecast data on the page
+function displayForecastData(data) {
+  const forecastItemsElement = document.getElementById("forecast-items");
+  forecastItemsElement.innerHTML = ""; // Clear previous forecast data
+
+  // Loop through the forecast data and create HTML elements for each day
+  data.daily.forEach((day, index) => {
+    if (index < 5) {
+      // Only show the next 5 days
+      const forecastItem = document.createElement("div");
+      forecastItem.classList.add("forecast-item");
+
+      const date = new Date(day.time * 1000);
+      const dayOfWeek = date.toLocaleDateString("en", { weekday: "short" });
+      const icon = getWeatherIcon(day.condition.icon);
+      const maxTemp = Math.round(day.temperature.maximum);
+      const minTemp = Math.round(day.temperature.minimum);
+
+      forecastItem.innerHTML = `
+        <div class="forecast-day">${dayOfWeek}</div>
+        <div class="forecast-icon">${icon}</div>
+        <div class="forecast-temp">
+          <span class="forecast-max">${maxTemp}°C</span>
+          <span class="forecast-min">${minTemp}°C</span>
+        </div>
+      `;
+
+      forecastItemsElement.appendChild(forecastItem);
+    }
+  });
 }
 
 // Function to format the time (optional)

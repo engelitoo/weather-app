@@ -1,3 +1,20 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f7fe;
+  color: #272142;
+}
+
+.weather-app {
+  background: white;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+}
+
+/* Search Form */
 .search-input {
   background-color: #f9f7fe;
   border: none;
@@ -7,6 +24,7 @@
   width: 75%;
   border-radius: 6px;
 }
+
 .search-button {
   margin-left: 5px;
   font-size: 16px;
@@ -16,64 +34,108 @@
   padding: 20px;
   line-height: 1;
   border-radius: 5px;
+  cursor: pointer;
 }
-form {
-  display: block;
-  margin-top: 0em;
+
+.search-button:hover {
+  background-color: #7b4de0;
 }
+
+/* Current Weather */
 .current-weather {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .current-city {
   font-size: 38px;
   font-weight: 900;
   margin: 0;
 }
+
 .current-details {
   color: rgba(39, 33, 66, 0.4);
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  position: relative;
-  justify-content: start;
 }
+
 .current-temperature {
   font-size: 48px;
   display: flex;
   justify-content: end;
   gap: 10px;
 }
+
 .currentweathericon {
   position: relative;
   top: 0px;
   font-size: 40px;
 }
+
 .currenttemperature {
   font-size: 80px;
   font-weight: bold;
 }
+
 .currentcelsius {
   font-size: 28px;
   position: relative;
   top: 0px;
 }
+
+/* Forecast Section */
+.forecast {
+  margin-top: 30px;
+}
+
+.forecast h2 {
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.forecast-items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forecast-item {
+  background-color: #f9f7fe;
+  border-radius: 6px;
+  padding: 15px;
+  text-align: center;
+  flex: 1;
+  margin: 0 5px;
+}
+
+.forecast-day {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.forecast-icon {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.forecast-temp {
+  font-size: 14px;
+}
+
+.forecast-max {
+  font-weight: 600;
+}
+
+.forecast-min {
+  color: rgba(39, 33, 66, 0.4);
+}
+
+/* Footer */
 footer {
   border-top: 1px solid #f9f7fe;
   text-align: center;
   padding-top: 15px;
   color: rgba(39, 33, 66, 0.4);
-}
-header {
-  border-bottom: 1px solid #f9f7fe;
-  padding-bottom: 30px;
-}
-.weather-app {
-  background: white;
-  max-width: 600px;
-  margin: 60px auto;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
 }
